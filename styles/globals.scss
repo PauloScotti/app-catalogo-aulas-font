@@ -1,10 +1,11 @@
 @import 'variaveis.scss';
+
 * {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12pt;
+  font-family: $fontRegular;
+  font-size: 14px;
 }
 
-htmk, body, #__next {
+html, body, #__next {
   height: 100%;
   margin: 0;
 }
@@ -18,5 +19,31 @@ htmk, body, #__next {
   display: none;
 }
 
+input {
+  &::placeholder {
+    color: $cinza2;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    color: $cinza2;
+  }
+
+  &::-ms-input-placeholder {
+    color: $cinza2;
+  }
+}
+
+.mensagemValidacao{
+  display: block;
+  color: $vermelho;
+  font-size: 90%;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+@import '../public/fonts/fonts.scss';
 @import '../componentes/botao/botao.scss';
 @import './paginaPublica.scss';
+@import '../componentes/inputPublico/inputPublico.scss';
+@import '../pages/cadastroUsuario/cadastro.scss';

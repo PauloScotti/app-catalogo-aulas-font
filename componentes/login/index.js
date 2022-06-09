@@ -1,35 +1,69 @@
 import InputPublico from "../inputPublico";
-import Image from "next/image";
 import Botao from '../botao/';
 import Link from "next/link";
 import { useState } from "react";
+import {validarEmail, validarSenha} from '../../utils/validadores';
+import UsuarioService from "../../services/UsuarioService";
 
 import imagemEmail from '../../public/imagens/envelope.svg';
 import imagemChave from '../../public/imagens/chave.svg';
-import imagemLogo from '../../public/vercel.svg';
 
-export default function Login() {
+const usuarioService = new UsuarioService();
+
+export default function Login({ aposAutenticacao }) {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [estaSubmetendo, setEstaSubmetendo] = useState(false);
+
+    const validarFormulario = () => {
+        return (
+            validarEmail(email) 
+            && validarSenha(senha)
+        )
+    }
+
+    const aoSubmeter = async (e) => {
+        e.preventDefault();
+        if(!validarFormulario()){
+            return;
+        }
+        setEstaSubmetendo(true);
+
+        try{
+
+            await usuarioService.login({
+                login: email,
+                senha
+            });
+
+            if (aposAutenticacao) {
+                aposAutenticacao();
+            }
+
+            setEstaSubmetendo(false);
+
+        } catch(error){
+            alert(
+                "Erro ao realizar o login. " + error?.response?.data?.erro
+            );
+        }
+
+    }
 
     return (
         <section className={'paginaLogin paginaPublica'}>
-            <div className="logoContainer">
-                <Image
-                    src={imagemLogo}
-                    alt="logotipo"
-                    layout="fill"
-                />
-            </div>
+            
             <div className="conteudoPaginaPublica">
-                <form>
+                <form onSubmit={aoSubmeter}>
                     <InputPublico
                         imagem={imagemEmail}
                         texto="E-mail"
                         tipo="email"
                         aoAlterarValor={e => setEmail(e.target.value)}
                         valor={email}
+                        mensagemValidacao="O e-mail informado é inválido"
+                        exibirMensagemValidacao={email && !validarEmail(email)}
                     />
 
                     <InputPublico
@@ -38,12 +72,14 @@ export default function Login() {
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
                         valor={senha}
+                        mensagemValidacao="Precisa ter pelo menos 4 caracteres"
+                        exibirMensagemValidacao={senha && !validarSenha(senha)}
                     />
 
                     <Botao
                         texto={"Login"}
                         tipo="submit"
-                        desabilitado={false}
+                        desabilitado={!validarFormulario() || estaSubmetendo}
                     />
                 </form>
 

@@ -2,6 +2,10 @@ const validarNome = (nome) => {
     return nome?.toString().length > 2;
 }
 
+const validarnivelAcesso = (nivelAcesso) => {
+    return nivelAcesso?.toString().length > 4;
+}
+
 const validarEmail = (email) => {
     const emailStr = email?.toString();
     return emailStr.length >= 5 && emailStr.includes('@') && emailStr.includes('.');
@@ -19,5 +23,6 @@ export {
     validarNome,
     validarEmail,
     validarSenha,
-    validarConfirmacaoSenha
+    validarConfirmacaoSenha,
+    validarnivelAcesso
 }

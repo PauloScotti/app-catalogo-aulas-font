@@ -1,0 +1,26 @@
+.paginaCadastro {
+
+    .uploadImagemContainer {
+        text-align: center;
+        position: relative;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        .avatarPreview {
+            height: 120px;
+            width: 120px;
+        }
+
+    }
+
+    @media screen and (min-width: $desktopBreakpoint) {
+        .rodapePaginaPublica {
+            display: flex;
+            justify-content: center;
+            
+            p {
+                margin-right: 6px;
+            }
+        }
+    }
+}
