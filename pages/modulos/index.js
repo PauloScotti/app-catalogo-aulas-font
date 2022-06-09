@@ -16,16 +16,20 @@ export default function ListaModulos() {
     }, []);
 
     return (
-        <div className="modulosContainer">
-            <h1>Modulos</h1>
-            {listaDeModulos.map(dadosModulos => (
-                    <>
-                    <Link href={`modulo?id=${dadosModulos._id}`}><p><strong>Nome:</strong> {dadosModulos.nome}</p></Link>
-                    <p><strong>Descrição:</strong> {dadosModulos.descricao}</p>
-                    <p><strong>Quantidade de Aulas:</strong> {dadosModulos.qtdAulas}</p>
-                    </>
-                ))
-            }
+        <div className="paginaLogin paginaPublica">
+            <div className="modulosContainer">
+                <h1>Modulos</h1>
+                {listaDeModulos.map(dadosModulos => (
+                        <>
+                        <section className="listaModulos">
+                            <Link href={`modulo?id=${dadosModulos._id}`}><p className="nomeModulo"><strong>Nome:</strong> {dadosModulos.nome}</p></Link>
+                            <p><strong>Descrição:</strong> {dadosModulos.descricao}</p>
+                            <p><strong>Quantidade de Aulas:</strong> {dadosModulos.qtdAulas}</p>
+                        </section>
+                        </>
+                    ))
+                }
+            </div>
         </div>
     )
 }

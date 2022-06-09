@@ -38,6 +38,29 @@
         }
     }
 
+    .modulosContainer{
+        padding: 10px;
+        border-radius: 10%;
+        position: absolute;
+      
+        h1{
+          text-align: center;
+        }
+      
+        .nomeModulo{
+          cursor: pointer;
+          color: $corPrimaria;
+        }
+        .nomeModulo:hover{
+          color: $amarelo;
+        }
+      
+        .listaModulos{
+          margin-bottom: 20px;
+          border-bottom: 1px solid $cinza4;
+        }
+      }
+
     @media screen and (min-width: $desktopBreakpoint) {
         flex-direction: row;
         padding: 0 140px;
@@ -75,5 +98,30 @@
                 font-size: 16px;
             }
         }
+
+        .modulosContainer{
+            border: 1px solid $corPrimaria;
+            padding: 20px;
+            border-radius: 10%;
+            position: absolute;
+          
+            h1{
+              text-align: center;
+              font-size: 20px;
+            }
+          
+            .nomeModulo{
+              cursor: pointer;
+              color: $corPrimaria;
+            }
+            .nomeModulo:hover{
+              color: $amarelo;
+            }
+          
+            .listaModulos{
+              margin-bottom: 20px;
+              border-bottom: 1px solid $cinza4;
+            }
+          }
     }
 }
