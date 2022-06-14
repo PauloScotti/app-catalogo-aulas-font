@@ -2,8 +2,9 @@ import axios from "axios";
 
 export default class HttpService {
     constructor() {
+        const URL = process.env.NEXT_PUBLIC_API_URL+'/api/';
         this.axios = axios.create({
-            baseURL: 'http://localhost:3001/api'
+            baseURL: URL
         });
 
         this.axios.interceptors.request.use((config) => {
@@ -25,7 +26,7 @@ export default class HttpService {
         return this.axios.post(url, data);
     }
 
-    get(url) {
-        return this.axios.get(url);
+    get(url, data) {
+        return this.axios.get(url, data);
     }
 }

@@ -1,10 +1,37 @@
-import comAutorizacao from "../../hoc/comAutorizacao"
+import { useState, useEffect } from "react";
+import ModulosService from "../../services/ModulosService";
+import Link from "next/link";
 
-function Home(){
-    
+const modulosService = new ModulosService();
+
+function ListaModulos() {
+    const [listaDeModulos, setListaDemodulos] = useState([]);
+
+    useEffect( () => {
+        const { data } = modulosService.listarModulos().then((response) => setListaDemodulos(response.data))
+        .catch((err) => {
+          console.error("ops! ocorreu um erro" + err);
+        });
+
+    }, []);
+
     return (
-        <h1>Home</h1>
+        <div className="paginaLogin paginaPublica">
+            <div className="modulosContainer">
+                <h1>Modulos</h1>
+                {listaDeModulos.map(dadosModulos => (
+                        <>
+                        <section className="listaModulos">
+                            <Link href={`modulos?id=${dadosModulos._id}`}><p className="nomeModulo"><strong>Nome:</strong> {dadosModulos.nome}</p></Link>
+                            <p><strong>Descrição:</strong> {dadosModulos.descricao}</p>
+                            <p><strong>Quantidade de Aulas:</strong> {dadosModulos.qtdAulas}</p>
+                        </section>
+                        </>
+                    ))
+                }
+            </div>
+        </div>
     )
 }
 
-export default comAutorizacao(Home)
+export default ListaModulos

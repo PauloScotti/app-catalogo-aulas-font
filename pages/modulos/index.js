@@ -1,30 +1,28 @@
 import { useState, useEffect } from "react";
 import ModulosService from "../../services/ModulosService";
 import Link from "next/link";
+import { useRouter } from 'next/router'
+import axios from "axios";
 
 const modulosService = new ModulosService();
 
-export default function ListaModulos() {
-    const [listaDeModulos, setListaDemodulos] = useState([]);
+function ListarAulas() {
+    const { query } = useRouter()
+    const id = query.id;
+    const [listaDeAulas, setListaDeAulas] = useState([]);
+    modulosService.abrirModulos(id).then((response) => setListaDeAulas(response.data));
 
-    useEffect( () => {
-        const { data } = modulosService.listarModulos().then((response) => setListaDemodulos(response.data))
-        .catch((err) => {
-          console.error("ops! ocorreu um erro" + err);
-        });
-
-    }, []);
-
+    
     return (
         <div className="paginaLogin paginaPublica">
             <div className="modulosContainer">
-                <h1>Modulos</h1>
-                {listaDeModulos.map(dadosModulos => (
+                <h1>Aulas do Módulo</h1>
+                {listaDeAulas.map(dadosAulas => (
                         <>
                         <section className="listaModulos">
-                            <Link href={`modulo?id=${dadosModulos._id}`}><p className="nomeModulo"><strong>Nome:</strong> {dadosModulos.nome}</p></Link>
-                            <p><strong>Descrição:</strong> {dadosModulos.descricao}</p>
-                            <p><strong>Quantidade de Aulas:</strong> {dadosModulos.qtdAulas}</p>
+                            <Link href={`aulas?id=${dadosAulas._id}`}><p className="nomeModulo"><strong>Nome:</strong> {dadosAulas.nome}</p></Link>
+                            <p><strong>Descrição:</strong> {dadosAulas.nome}</p>
+                            <p><strong>Quantidade de Aulas:</strong> {dadosAulas.data}</p>
                         </section>
                         </>
                     ))
@@ -33,3 +31,5 @@ export default function ListaModulos() {
         </div>
     )
 }
+
+export default ListarAulas
