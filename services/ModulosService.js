@@ -21,20 +21,20 @@ export default class ModulosService extends HttpService {
         return this.get(`/aula?id=${aula}`);
     }
 
-    async editarModulos() {
-        return this.put(`/editarModulos?id=${id}`);
+    async editarModulos(dados) {
+        return this.put(`/editarModulos`, dados);
     }
 
-    async editarAulas() {
-        return this.put(`/editarAulas?id=${id}`);
+    async editarAulas(dados) {
+        return this.put(`/editarAulas`, dados);
     }
 
-    async cadastrarModulos() {
-        return this.post(`/cadastrarModulos?`);
+    async cadastrarModulos(dados) {
+        return this.post(`/cadastrarModulos`, dados);
     }
 
-    async cadastrarAulas() {
-        return this.post(`/cadastrarAulas?`);
+    async cadastrarAulas(dados) {
+        return this.post(`/cadastrarAulas`, dados);
     }
 
     async deletarModulos() {
