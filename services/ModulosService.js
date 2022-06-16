@@ -2,6 +2,14 @@ import HttpService from "./HttpService";
 
 export default class ModulosService extends HttpService {
     
+     async logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('tokenAdm');
+        localStorage.removeItem('nome');
+        localStorage.removeItem('email');
+        localStorage.removeItem('avatar');
+    }
+    
     async listarModulos() {
         return this.get('/modulos');
     }
