@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 export default function Cabecalho() {
 
     const nomeCompleto = localStorage.getItem('nome');
     const primeiroNome = nomeCompleto?.split(' ')[0] || '';
+    const router = useRouter();
 
     const sair = () => {
         localStorage.removeItem('token');
@@ -11,6 +13,7 @@ export default function Cabecalho() {
         localStorage.removeItem('nome');
         localStorage.removeItem('email');
         localStorage.removeItem('avatar');
+        router.push('/');
     }
 
     return (
