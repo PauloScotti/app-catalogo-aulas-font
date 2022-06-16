@@ -1,18 +1,17 @@
 import Link from "next/link";
 import { useRouter } from 'next/router';
+import ModulosService from '../../services/ModulosService';
+
+const modulosService = new ModulosService();
 
 export default function Cabecalho() {
 
     const nomeCompleto = localStorage.getItem('nome');
     const primeiroNome = nomeCompleto?.split(' ')[0] || '';
     const router = useRouter();
-
-    const sair = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('tokenAdm');
-        localStorage.removeItem('nome');
-        localStorage.removeItem('email');
-        localStorage.removeItem('avatar');
+    
+    const logout = () => {
+        modulosService.logout();
         router.push('/');
     }
 
@@ -21,7 +20,7 @@ export default function Cabecalho() {
             <div className="desktop">
                 <span>{'Olá, ' + primeiroNome}</span>
                 <Link href={'/'}>Módulos</Link>
-                <button onClick={sair}>Sair</button>
+                <button onClick={logout}>Sair</button>
             </div>
         </div>
     )
