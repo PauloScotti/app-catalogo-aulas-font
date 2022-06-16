@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ModulosService from "../../services/ModulosService";
 import Link from "next/link";
 import { useRouter } from 'next/router'
-import axios from "axios";
+import Cabecalho from "../../componentes/Cabecalho";
+import Footer from "../../componentes/Footer";
 
 const modulosService = new ModulosService();
 
@@ -14,6 +15,7 @@ function ListarAulas() {
 
     
     return (
+        <><Cabecalho/>
         <div className="paginaLogin paginaPublica">
             <div className="modulosContainer">
                 <h1>Aulas do Módulo</h1>
@@ -29,6 +31,8 @@ function ListarAulas() {
                 }
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
 

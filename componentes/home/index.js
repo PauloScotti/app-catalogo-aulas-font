@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import ModulosService from "../../services/ModulosService";
 import Link from "next/link";
+import Cabecalho from "../Cabecalho";
+import Footer from "../Footer";
 
 const modulosService = new ModulosService();
 
@@ -8,7 +10,7 @@ function ListaModulos() {
     const [listaDeModulos, setListaDemodulos] = useState([]);
 
     useEffect( () => {
-        const { data } = modulosService.listarModulos().then((response) => setListaDemodulos(response.data))
+        modulosService.listarModulos().then((response) => setListaDemodulos(response.data))
         .catch((err) => {
           console.error("ops! ocorreu um erro" + err);
         });
@@ -16,6 +18,7 @@ function ListaModulos() {
     }, []);
 
     return (
+        <><Cabecalho/>
         <div className="paginaLogin paginaPublica">
             <div className="modulosContainer">
                 <h1>Modulos</h1>
@@ -31,6 +34,8 @@ function ListaModulos() {
                 }
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
 

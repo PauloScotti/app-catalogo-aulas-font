@@ -8,6 +8,7 @@
 html, body, #__next {
   height: 100%;
   margin: 0;
+  background-color: $cinza;
 }
 
 .avatar{
@@ -44,6 +45,8 @@ input {
 
 @import '../public/fonts/fonts.scss';
 @import '../componentes/botao/botao.scss';
+@import '../componentes/Cabecalho/cabecalho.scss';
+@import '../componentes/Footer/footer.scss';
 @import './paginaPublica.scss';
 @import '../componentes/inputPublico/inputPublico.scss';
 @import '../pages/cadastroUsuario/cadastro.scss';
