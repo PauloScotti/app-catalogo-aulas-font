@@ -17,7 +17,7 @@ function AbrirAula() {
     
     return (
         <><Cabecalho/>
-        <div className="paginaLogin paginaPublica">
+        <div className="paginaPublica">
             <div className="modulosContainer">
                 <h1>Aula {listaAula.nome}</h1>
                 <>

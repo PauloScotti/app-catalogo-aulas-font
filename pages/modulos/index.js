@@ -16,7 +16,7 @@ function ListarAulas() {
     
     return (
         <><Cabecalho/>
-        <div className="paginaLogin paginaPublica">
+        <div className="paginaPublica">
             <div className="modulosContainer">
                 <h1>Aulas do Módulo</h1>
                 {listaDeAulas.map(dadosAulas => (

@@ -19,10 +19,15 @@ const validarConfirmacaoSenha = (senha, confirmacao) => {
     return validarSenha(senha) && senha === confirmacao;
 }
 
+const validaDescricao = (descricao) => {
+    return descricao?.toString().length > 5;
+}
+
 export {
     validarNome,
     validarEmail,
     validarSenha,
     validarConfirmacaoSenha,
-    validarnivelAcesso
+    validarnivelAcesso,
+    validaDescricao
 }

@@ -24,6 +24,14 @@ export default class UsuarioService extends HttpService {
         }
     }
 
+    async logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('tokenAdm');
+        localStorage.removeItem('nome');
+        localStorage.removeItem('email');
+        localStorage.removeItem('avatar');
+    }
+
     async cadastroUsuarios(dados) {
         return this.post('/cadastroUsuarios', dados);
     }

@@ -52,7 +52,7 @@ export default function Login({ aposAutenticacao }) {
     }
 
     return (
-        <section className={'paginaLogin paginaPublica'}>
+        <section className={'paginaPublica'}>
             
             <div className="conteudoPaginaPublica">
                 <form onSubmit={aoSubmeter}>

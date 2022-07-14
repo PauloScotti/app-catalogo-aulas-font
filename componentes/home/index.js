@@ -19,15 +19,16 @@ function ListaModulos() {
 
     return (
         <><Cabecalho/>
-        <div className="paginaLogin paginaPublica">
-            <div className="modulosContainer">
+        <div className="paginaPublica">
                 <h1>Modulos</h1>
+            <div className="modulosContainer">
                 {listaDeModulos.map(dadosModulos => (
                         <>
                         <section className="listaModulos">
-                            <Link href={`modulos?id=${dadosModulos._id}`}><p className="nomeModulo"><strong>Nome:</strong> {dadosModulos.nome}</p></Link>
+                            <p><strong>Nome:</strong> {dadosModulos.nome}</p>
                             <p><strong>Descrição:</strong> {dadosModulos.descricao}</p>
                             <p><strong>Quantidade de Aulas:</strong> {dadosModulos.qtdAulas}</p>
+                            <Link href={`modulos?id=${dadosModulos._id}`}><p className="nomeModulo">Abrir o módulo</p></Link>
                         </section>
                         </>
                     ))

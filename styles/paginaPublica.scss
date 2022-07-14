@@ -1,11 +1,13 @@
 .paginaPublica {
-    display: flex;
-    flex-direction: column;
-    height: 80%;
+    height: 90%;
     justify-content: center;
-    align-items: center;
     padding: 0 32px;
     background-color: $cinza;
+
+    h1{
+      font-size: 16px;
+      text-align: center;
+    }
 
     .logoContainer {
         position: relative;
@@ -16,6 +18,7 @@
 
     .conteudoPaginaPublica {
         width: 100%;
+        margin: 0 auto;
     }
     
     .btn {
@@ -41,7 +44,6 @@
     .modulosContainer{
         padding: 10px;
         border-radius: 10%;
-        position: absolute;
       
         h1{
           text-align: center;
@@ -63,12 +65,10 @@
 
     @media screen and (min-width: $desktopBreakpoint) {
         flex-direction: row;
-        padding: 0 140px;
         font-size: 18px;
-        
+        margin: 20px 0;
         
         .conteudoPaginaPublicaCadastro {
-            flex: 1;
             width: 30%;
             border: 1px solid $corPrimaria;
             border-radius: 26px;
@@ -100,10 +100,10 @@
         }
 
         .modulosContainer{
-            border: 1px solid $corPrimaria;
-            padding: 20px;
-            border-radius: 10%;
-            position: absolute;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
           
             h1{
               text-align: center;
@@ -112,15 +112,26 @@
           
             .nomeModulo{
               cursor: pointer;
-              color: $corPrimaria;
+              border-radius: 100px;
+              background: transparent;
+              border: 1px solid $corPrimaria;
+              text-align: center;
+              padding: 8px 0px;
+              display: flex;
+              justify-content: center;
             }
             .nomeModulo:hover{
-              color: $amarelo;
+              background: $corPrimaria;
+              border: 1px solid transparent;
+              color: $branco;
             }
           
             .listaModulos{
-              margin-bottom: 20px;
-              border-bottom: 1px solid $cinza4;
+              padding: 10px;
+              max-width: 800px;
+              border: 1px solid rgb(67, 51, 118);
+              box-sizing: border-box;
+              border-radius: 16px;
             }
           }
     }

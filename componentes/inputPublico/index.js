@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export default function InputPublico({
-    imagem,
     tipo,
     texto,
     valor = '',
@@ -12,13 +11,13 @@ export default function InputPublico({
     return (
         <div className="inputPublicoContainer">
             <div className="inputPublico">
-                <Image
+                {/* <Image
                     src={imagem}
                     alt="imagem do campo"
                     className="iconeInputPublico"
                     width={20}
                     height={20}
-                />
+                /> */}
                 
                 <input
                     type={tipo}
