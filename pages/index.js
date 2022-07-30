@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Home from "../componentes/Home";
-import HomePublica from "../componentes/Home/HomePuclica";
+import HomePublica from "../componentes/Home/HomePublica";
 import UsuarioService from "../services/UsuarioService";
 
 const usuarioService = new UsuarioService();

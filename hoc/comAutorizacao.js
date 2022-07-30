@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import UsuarioService from "../services/UsuarioService";
-import HomePublica from "../componentes/Home/HomePuclica";
+import HomePublica from "../componentes/Home/HomePublica";
 
 const usuarioService = new UsuarioService();
 
