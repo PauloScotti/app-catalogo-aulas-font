@@ -6,34 +6,39 @@ export default class ModulosService extends HttpService {
         return this.get('/modulos');
     }
 
-    async abrirModulos(id) {
+    async abrirAulasModulos(id) {
         return this.get(`/pesquisarAulas?id=${id}`);
     }
+
+    async abrirModulo(id) {
+        return this.get(`/modulos?id=${id}`);
+    }
+
     async abrirAula(aula) {
         return this.get(`/aula?id=${aula}`);
     }
 
-    async editarModulos(dados) {
-        return this.put(`/editarModulos`, dados);
+    async editarModulos(id, dados) {
+        return this.put(`/editarModulos?id=${id}`, dados);
     }
 
-    async editarAulas(dados) {
-        return this.put(`/editarAulas`, dados);
+    async editarAulas(id, dados) {
+        return this.put(`/editarAulas?id=${id}`, dados);
     }
 
     async cadastrarModulos(dados) {
         return this.post(`/cadastroModulos`, dados);
     }
 
-    async cadastrarAulas(dados) {
-        return this.post(`/cadastrarAulas`, dados);
+    async cadastrarAulas(id, dados) {
+        return this.post(`/cadastroAulas?id=${id}`, dados);
     }
 
-    async deletarModulos() {
+    async deletarModulos(id) {
         return this.delete(`/deletarModulos?id=${id}`);
     }
 
-    async deletarAulas() {
+    async deletarAulas(id) {
         return this.delete(`/deletarAulas?id=${id}`);
     }
 

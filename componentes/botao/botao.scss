@@ -9,11 +9,24 @@
     border: 1px solid $corPrimaria;
 }
 
+@mixin botaoVermelho {
+    background-color: $vermelho;
+    color: $branco;
+}
+
+@mixin botaoVermelhoInvertido {
+    background-color: $branco;
+    color: $vermelho;
+    border: 1px solid $vermelho;
+}
+
 .btn {
     width: 100%;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    margin-top: 15px;
+    padding: 10px;
 
     &.primaria {
         @include botaoPrimario;
@@ -31,8 +44,25 @@
         }
     }
 
+    &.vermelho{
+        @include botaoVermelho;
+
+        &:hover {
+            @include botaoVermelhoInvertido;
+        }
+    }
+    
     &:disabled {
         opacity: 0.5;
     }
 
+
+}
+
+
+@media screen and (min-width: $desktopBreakpoint) {
+    .btn {
+        padding: 18px;
+        font-size: 18px;
+    }
 }

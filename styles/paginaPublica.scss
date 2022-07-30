@@ -1,5 +1,4 @@
 .paginaPublica {
-    height: 90%;
     justify-content: center;
     padding: 0 32px;
     background-color: $cinza;
@@ -19,11 +18,6 @@
     .conteudoPaginaPublica {
         width: 100%;
         margin: 0 auto;
-    }
-    
-    .btn {
-        margin-top: 15px;
-        padding: 10px;
     }
 
     .rodapePaginaPublica {
@@ -49,18 +43,33 @@
           text-align: center;
         }
       
-        .nomeModulo{
-          cursor: pointer;
-          color: $corPrimaria;
-        }
-        .nomeModulo:hover{
-          color: $amarelo;
-        }
-      
         .listaModulos{
           margin-bottom: 20px;
           border-bottom: 1px solid $cinza4;
         }
+      }
+      
+      .nomeModulo{
+        cursor: pointer;
+        color: $corPrimaria;
+      }
+      .nomeModulo:hover{
+        color: $amarelo;
+      }
+
+      .link-btn {
+        cursor: pointer;
+        background-color: $corPrimaria;
+        color: $branco;
+        padding: 10px;
+        border-radius: 15px;
+        border: 1px solid $corPrimaria;
+      }
+
+      .link-btn:hover {
+        background-color: $branco;
+        color: $corPrimaria;
+        border: 1px solid $corPrimaria;
       }
 
     @media screen and (min-width: $desktopBreakpoint) {
@@ -82,20 +91,9 @@
             padding: 50px;
         }
 
-        .btn {
-            padding: 18px;
-            font-size: 18px;
-        }
-
         .rodapePaginaPublica {
             p, a {
                 font-size: 18px;
-            }
-        }
-
-        .inputPublico {
-            input {
-                font-size: 16px;
             }
         }
 
@@ -110,7 +108,47 @@
               font-size: 20px;
             }
           
-            .nomeModulo{
+            .listaModulos{
+              padding: 10px;
+              max-width: 800px;
+              border: 1px solid rgb(67, 51, 118);
+              box-sizing: border-box;
+              border-radius: 16px;
+            }
+          }
+          
+          .nomeModulo{
+            cursor: pointer;
+            border-radius: 100px;
+            background: transparent;
+            border: 1px solid $corPrimaria;
+            text-align: center;
+            padding: 8px 0px;
+            display: flex;
+            justify-content: center;
+          }
+          .nomeModulo:hover{
+            background: $corPrimaria;
+            border: 1px solid transparent;
+            color: $branco;
+          }
+
+          .aulasContainer {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .listaAulas{
+              padding: 10px;
+              max-width: 800px;
+              border: 1px solid rgb(67, 51, 118);
+              box-sizing: border-box;
+              border-radius: 16px;
+              margin-bottom: 5px;
+            }
+
+            .nomeAula{
               cursor: pointer;
               border-radius: 100px;
               background: transparent;
@@ -119,19 +157,12 @@
               padding: 8px 0px;
               display: flex;
               justify-content: center;
+              padding: 5px; 
             }
-            .nomeModulo:hover{
+            .nomeAula:hover{
               background: $corPrimaria;
               border: 1px solid transparent;
               color: $branco;
-            }
-          
-            .listaModulos{
-              padding: 10px;
-              max-width: 800px;
-              border: 1px solid rgb(67, 51, 118);
-              box-sizing: border-box;
-              border-radius: 16px;
             }
           }
     }

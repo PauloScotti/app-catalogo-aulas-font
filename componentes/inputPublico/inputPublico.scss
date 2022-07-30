@@ -4,6 +4,7 @@
         padding-bottom: 10px;
         border-bottom: 1px solid $corPrimaria;
         margin-bottom: 25px;
+        width: 100%;
     }
 
     input{
@@ -11,5 +12,13 @@
         outline: none;
         color: $corPrimaria;
         flex: 1;
+    }
+}
+
+@media screen and (min-width: $desktopBreakpoint) {
+    .inputPublico {
+        input {
+            font-size: 16px;
+        }
     }
 }

@@ -16,8 +16,8 @@ html, body, #__next {
   object-fit: cover;
 }
 
-.oculto{
-  display: none;
+.oculto {
+  display: none !important;
 }
 
 input {
@@ -45,9 +45,11 @@ input {
 
 @import '../public/fonts/fonts.scss';
 @import '../componentes/botao/botao.scss';
-@import '../componentes/Cabecalho/cabecalho.scss';
+@import '../componentes/layout/Cabecalho/cabecalho.scss';
 @import '../pages/cadastroModulos/cadastroModulos.scss';
-@import '../componentes/Footer/footer.scss';
+@import '../pages/cadastroAulas/cadastroAulas.scss';
+@import '../componentes/layout/Footer/footer.scss';
 @import './paginaPublica.scss';
 @import '../componentes/inputPublico/inputPublico.scss';
 @import '../pages/cadastroUsuario/cadastro.scss';
+@import '../componentes/AcaoMensagem/AcaoMensagem.scss';

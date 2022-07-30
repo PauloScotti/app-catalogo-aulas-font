@@ -34,7 +34,7 @@ export default function Cadastro() {
             && validarEmail(email) 
             && validarSenha(senha)
             && validarConfirmacaoSenha(senha, confirmarSenha)
-            && validarnivelAcesso(nivelAcesso)
+            // && validarnivelAcesso(nivelAcesso)
         );
     }
 
@@ -51,7 +51,7 @@ export default function Cadastro() {
             corpoReqCadastro.append("nome", nome);
             corpoReqCadastro.append("email", email);
             corpoReqCadastro.append("senha", senha);
-            corpoReqCadastro.append("nivelAcesso", nivelAcesso);
+            // corpoReqCadastro.append("nivelAcesso", nivelAcesso);
 
             if(imagem.arquivo){
                 corpoReqCadastro.append('file', imagem.arquivo);
@@ -92,7 +92,7 @@ export default function Cadastro() {
                         mensagemValidacao="O nome precisa ter pelo menos 3 caracteres"
                         exibirMensagemValidacao={nome && !validarNome(nome)}
                     />
-                    
+{/*                     
                     <InputPublico
                         imagem={nivelAcessoPNG}
                         texto="Nível de Acesso"
@@ -101,7 +101,7 @@ export default function Cadastro() {
                         valor={nivelAcesso}
                         mensagemValidacao="O nivel de acesso precisa ser informado"
                         exibirMensagemValidacao={nivelAcesso && !validarnivelAcesso(nivelAcesso)}
-                    />
+                    /> */}
 
                     <InputPublico
                         imagem={imagemEmail}
@@ -142,7 +142,7 @@ export default function Cadastro() {
                 
                 <div className="rodapePaginaPublica">
                     <p>Já possui uma conta?</p>
-                    <Link href="/">Faça seu login agora</Link>
+                    <Link href="/login">Faça seu login agora</Link>
                 </div>
             </div>
             </section>

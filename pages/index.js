@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Home from "../componentes/Home";
-import Login from "../componentes/login";
+import HomePublica from "../componentes/Home/HomePuclica";
 import UsuarioService from "../services/UsuarioService";
 
 const usuarioService = new UsuarioService();
@@ -12,7 +12,7 @@ export default function Index() {
 
   useEffect(() => {
     setEstaAutenticado(
-      usuarioService.estaAutenticado()
+      usuarioService.estaAutenticadoAdm()
     );
   }, [token]);
 
@@ -20,8 +20,8 @@ export default function Index() {
     return (
       <Home/>
     );
-  }
+  } //https://youtu.be/ne_JZ2AYAos?t=3762
 
-  return <Login aposAutenticacao={() => setEstaAutenticado(true)} />;
+  return <HomePublica />;
 
 }

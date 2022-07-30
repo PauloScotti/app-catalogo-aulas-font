@@ -5,26 +5,29 @@ import Footer from "../../componentes/layout/Footer";
 import InputPublico from "../../componentes/inputPublico";
 import comAutorizacao from '../../hoc/comAutorizacao';
 import ModulosService from "../../services/ModulosService";
-import { validaDescricao, validarNome } from "../../utils/validadores";
+import { validaData, validarNome } from "../../utils/validadores";
+import { useRouter } from "next/router";
 import AcaoMensagem from "../../componentes/AcaoMensagem";
-import UsuarioService from "../../services/UsuarioService";
 import CabecalhoPublico from "../../componentes/layout/Cabecalho/cabecalhoPublico";
+import UsuarioService from "../../services/UsuarioService";
 
 const moduloService = new ModulosService();
 const usuarioService = new UsuarioService();
 
-function CadastroModulos() {
+function CadastroAulas() {
 
     const [nome, setNome] = useState("");
-    const [descricao, setDescricao] = useState("");
+    const [data, setData] = useState("");
     const [estaSubmetendo, setEstaSubmetendo] = useState(false);
-
+    const { query } = useRouter();
+    
+    const id = query.id;
     const estaLogado = usuarioService.estaAutenticadoAdm();
 
     const validarFormulario = () => {
         return (
             validarNome(nome)
-            && validaDescricao(descricao) 
+            && validaData(data) 
         );
     }
 
@@ -37,13 +40,15 @@ function CadastroModulos() {
         setEstaSubmetendo(true);
 
         try{
-            await moduloService.cadastrarModulos({
+            const dadosAula = ({
                 nome: nome,
-                descricao: descricao
+                data: data
             });
 
+            await moduloService.cadastrarAulas(id, dadosAula);
+
             setNome('');
-            setDescricao('');
+            setData('');
 
         } catch(error){
             alert(
@@ -60,12 +65,12 @@ function CadastroModulos() {
         {estaLogado ? <Cabecalho/> : <CabecalhoPublico /> }
         <div className="inputPublicoContainer">
             <AcaoMensagem classe={'salvar'} mensagem={'Salvo com sucesso'} />
-            <h1>Cadastro de Módulos</h1>
+            <h1>Cadastro de Aulas</h1>
             <div className="inputPublicoModulos">
 
                 <form onSubmit={aoSubmeter}>
                     <InputPublico
-                        texto="Nome do Módulo"
+                        texto="Nome da Aula"
                         tipo="text"
                         aoAlterarValor={e => setNome(e.target.value)}
                         valor={nome}
@@ -74,12 +79,12 @@ function CadastroModulos() {
                     />
                     
                     <InputPublico
-                        texto="Descrição"
-                        tipo="text"
-                        aoAlterarValor={e => setDescricao(e.target.value)}
-                        valor={descricao}
-                        mensagemValidacao="A descrição precisa ter pelo menos 5 caracteres"
-                        exibirMensagemValidacao={descricao && !validaDescricao(descricao)}
+                        texto="Data de início"
+                        tipo="date"
+                        aoAlterarValor={e => setData(e.target.value)}
+                        valor={data}
+                        mensagemValidacao="A data precisa possuir o dia, mês e ano no formato dd/mm/aaaa"
+                        exibirMensagemValidacao={data && !validaData(data)}
                     />
 
                     <Botao
@@ -95,4 +100,4 @@ function CadastroModulos() {
     )
 }
 
-export default comAutorizacao(CadastroModulos);
+export default comAutorizacao(CadastroAulas);

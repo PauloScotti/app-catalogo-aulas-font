@@ -37,12 +37,10 @@ export default class UsuarioService extends HttpService {
     }
 
     estaAutenticado() {
-        if(localStorage.getItem('token') !== null){
-            return localStorage.getItem('token');
-        }
-        
-        if(localStorage.getItem('tokenAdm') !== null){
-            return localStorage.getItem('tokenAdm');
-        }
+        return localStorage.getItem('token');
+    }
+
+    estaAutenticadoAdm() {
+        return localStorage.getItem('tokenAdm');
     }
 }

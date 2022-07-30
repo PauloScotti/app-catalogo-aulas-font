@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ModulosService from "../../services/ModulosService";
-import Link from "next/link";
 import { useRouter } from 'next/router'
-import axios from "axios";
-import Cabecalho from "../../componentes/Cabecalho";
-import Footer from "../../componentes/Footer";
+import Cabecalho from "../../componentes/layout/Cabecalho";
+import CabecalhoPublico from "../../componentes/layout/Cabecalho/cabecalhoPublico";
+import Footer from "../../componentes/layout/Footer";
+import UsuarioService from "../../services/UsuarioService";
+import moment from 'moment';
 
 const modulosService = new ModulosService();
+const usuarioService = new UsuarioService();
 
 function AbrirAula() {
     const { query } = useRouter()
@@ -14,16 +16,18 @@ function AbrirAula() {
     const [listaAula, setListaAula] = useState([]);
     modulosService.abrirAula(id).then((response) => setListaAula(response.data));
 
+    const estaLogado = usuarioService.estaAutenticadoAdm();
     
     return (
-        <><Cabecalho/>
+        <>
+        {estaLogado ? <Cabecalho/> : <CabecalhoPublico /> }
         <div className="paginaPublica">
-            <div className="modulosContainer">
+            <div className="aulasContainer">
                 <h1>Aula {listaAula.nome}</h1>
                 <>
-                <section>
-                    <p><strong>Descrição:</strong> {listaAula.nome}</p>
-                    <p><strong>Data da Aula:</strong> {listaAula.data}</p>
+                <section className="listaAulas">
+                    <p><strong>Nome:</strong> {listaAula.nome}</p>
+                    <p><strong>Data da Aula:</strong> {moment(listaAula.data).utc().format('DD/MM/yyyy')}</p>
                 </section>
                 </>
             </div>
